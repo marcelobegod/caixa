@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <h1>Caixa Eletrônico</h1>
+        <form action="" method="get" onsubmit="event.preventDefault(); sacar()">
+            <p>
+                <label for="saque">Quanto você deseja sacar?</label>
+                <input type="number" name="saque" id="saque">
+            </p>
+            <p>
+                <input type="submit" value="Calcular">
+            </p>
+        </form>
+    </main>
+    <section>
+        <h2>Você irá receber as seguintes notas:</h2>
+        <p id="msg"></p>
+    </section>      
+<script>
+    function sacar()    {
+        let saq = Number(saque.value)
+        let sob50 = Math.floor(saq / 50)
+        let saq50 = saq % 50
+        let sob10 = Math.floor(saq50 / 10)
+        let saq10 = saq50 % 10
+        let saq5 = Math.floor(saq10 / 5) 
+        if (saq > 49) {
+            msg.innerHTML = `Você receberá ${sob50} notas de R$ 50,00<br> `
+        } 
+        if (saq50 > 9 && saq50 < 50) {
+            msg.innerHTML += `Você receberá ${sob10} notas de R$ 10,00<br>`
+        }
+        if (saq10 > 4 && saq10 < 10) {
+            msg.innerHTML += `Você receberá ${saq5} notas de R$ 5,00<br>`
+        } 
+    }
+</script>
+</body>
+</html>
